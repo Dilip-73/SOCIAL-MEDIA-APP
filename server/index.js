@@ -1,6 +1,7 @@
 import express from "express";
 import { MongoClient } from "mongodb";
 import "dotenv/config";
+import { Home } from "./controllers/home.js";
 
 const app = express();
 
@@ -34,12 +35,12 @@ const dbName = "Contacts";
 const db = client.db(dbName);
 const collection = db.collection("contacts");
 
-// home get method
-app.get("/", function (req, res) {
-  res.send("Hello World");
-});
+//seperation of concerns
 
-app.post('/',  async ()=>{
+// home get method
+app.get("/", Home);
+
+app.get('/watch',  async ()=>{
 
 })
 
